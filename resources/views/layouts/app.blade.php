@@ -17,30 +17,27 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Admin Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ route('admin.home.index') }}">Home <span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('ingredients.index') }}">Ingredients</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('recipes.index') }}">Recipes</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Users</a>
-                </li>
-              </ul>
+    <div class="container p-3 bg-white border-bottom shadow-sm mb-3">
+        <div class="row">
+            <div class="col-lg-2 p-3 text-center">
+                <a class="text-dark text-decoration-none" href="{{ route('admin.home.index') }}"><h3 class="my-0 mr-md-auto font-weight-normal">Masak Apa?</h3></a>
             </div>
-          </nav>
+            <div class="col-lg-3 p-0 mb-0"></div>
+            <div class="col-lg-7 p-3 text-center">
+                <nav class="my-2 my-md-0 mr-md-3"">
+                          <a class="p-2 text-dark text-decoration-none" href="{{ route('admin.home.index') }}">Home</a>
+                          <a class="p-2 text-dark text-decoration-none" href="{{ route('ingredients.index') }}">Ingredients</a>
+                          <a class="p-2 text-dark text-decoration-none" href="{{ route('recipes.index') }}">Recipes</a>
+                          <a class="p-2 text-dark text-decoration-none" href="{{ route('spices.index') }}">Spices</a>
+                          <a class="p-2 text-dark text-decoration-none" href="{{ route('origins.index') }}">Origins</a>
+                          <a class="p-2 text-dark text-decoration-none" href="{{ route('units.index') }}">Units</a>
+                          <a class="p-2 text-dark text-decoration-none" href="#">Users</a>
+                          <a class="p-2 text-dark text-decoration-none" href="#">Logout</a>
+                </nav>
+            </div>
+        </div>
     </div>
+
 
     <div class="container">
         @if(session('status'))
