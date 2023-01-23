@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminHomeController;
+use App\Http\Controllers\MemberHomeController;
 use App\Http\Controllers\IngredientsController;
 use App\Http\Controllers\OriginsController;
 use App\Http\Controllers\RecipesController;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return "Test route";
+//     return view('member.home.index');
 // });
 
 // Auth::routes();
@@ -29,6 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 //admin home controller routes
 Route::get('/admin', [AdminHomeController::class, 'home'])->name('admin.home.index');
+Route::get('/', [MemberHomeController::class, 'home'])->name('member.home.index');
 
 //route resource for ingredients
 Route::resource('/admin/ingredients', IngredientsController::class);
