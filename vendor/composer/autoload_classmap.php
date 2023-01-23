@@ -32,6 +32,7 @@ return array(
     'App\\Models\\Ingredients' => $baseDir . '/app/Models/Ingredients.php',
     'App\\Models\\Instructions' => $baseDir . '/app/Models/Instructions.php',
     'App\\Models\\Recipes' => $baseDir . '/app/Models/Recipes.php',
+    'App\\Models\\Spices' => $baseDir . '/app/Models/Spices.php',
     'App\\Models\\Units' => $baseDir . '/app/Models/Units.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

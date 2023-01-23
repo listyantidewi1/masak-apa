@@ -540,6 +540,7 @@ class ComposerStaticInit6c881032f4b3fc87eecf232076fcbc5b
         'App\\Models\\Ingredients' => __DIR__ . '/../..' . '/app/Models/Ingredients.php',
         'App\\Models\\Instructions' => __DIR__ . '/../..' . '/app/Models/Instructions.php',
         'App\\Models\\Recipes' => __DIR__ . '/../..' . '/app/Models/Recipes.php',
+        'App\\Models\\Spices' => __DIR__ . '/../..' . '/app/Models/Spices.php',
         'App\\Models\\Units' => __DIR__ . '/../..' . '/app/Models/Units.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
