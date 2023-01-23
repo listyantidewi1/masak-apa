@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('instructions', function (Blueprint $table) {
+        Schema::create('origins', function (Blueprint $table) {
             $table->id();
-            $table->integer('recipe_id');
-            $table->text('instructions');
+            $table->string('origin');
             $table->timestamps();
-            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instructions');
+        Schema::dropIfExists('origins');
     }
 };

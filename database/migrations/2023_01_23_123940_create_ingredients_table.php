@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('origin_id');
             $table->text('description');
             $table->timestamps();
+            $table->foreign('origin_id')->references('id')->on('origins')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

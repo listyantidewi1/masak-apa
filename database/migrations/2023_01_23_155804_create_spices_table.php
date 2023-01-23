@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('spices', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
+            $table->string('name');
+            $table->integer('origin_id');
+            $table->text('description');
             $table->timestamps();
+            $table->foreign('origin_id')->references('id')->on('origins')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
