@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SpicesController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class SpicesController extends Controller
     public function index()
     {
         //
-        return view('admin.spices.index');
+        return view('admin.categories.index');
     }
 
     /**

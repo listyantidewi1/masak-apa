@@ -27,8 +27,8 @@
                 <nav class="my-2 my-md-0 mr-md-3"">
                     <a class="p-2 text-dark text-decoration-none" href="{{ route('admin.home.index') }}">Home</a>
                     <a class="p-2 text-dark text-decoration-none" href="{{ route('ingredients.index') }}">Ingredients</a>
+                    <a class="p-2 text-dark text-decoration-none" href="{{ route('categories.index') }}">Categories</a>
                     <a class="p-2 text-dark text-decoration-none" href="{{ route('recipes.index') }}">Recipes</a>
-                    <a class="p-2 text-dark text-decoration-none" href="{{ route('spices.index') }}">Spices</a>
                     <a class="p-2 text-dark text-decoration-none" href="{{ route('origins.index') }}">Origins</a>
                     <a class="p-2 text-dark text-decoration-none" href="{{ route('units.index') }}">Units</a>
                     <a class="p-2 text-dark text-decoration-none" href="#">Users</a>
