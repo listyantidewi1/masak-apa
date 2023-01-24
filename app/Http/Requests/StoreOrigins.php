@@ -13,7 +13,7 @@ class StoreOrigins extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class StoreOrigins extends FormRequest
     public function rules()
     {
         return [
-            //
+            //rule for validation
+            'origin' => 'bail|required|min:3|max:100'
         ];
     }
 }

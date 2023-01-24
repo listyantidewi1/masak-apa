@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Origins extends Model
 {
+    protected $fillable =['origin'];
+
     use HasFactory;
 }
