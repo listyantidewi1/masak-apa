@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUnits;
+use App\Models\Units;
 use Illuminate\Http\Request;
 
 class UnitsController extends Controller
@@ -14,7 +16,7 @@ class UnitsController extends Controller
     public function index()
     {
         //
-        return view('admin.units.index');
+        return view('admin.units.index', ['name' => Units::all()]);
     }
 
     /**
@@ -25,6 +27,7 @@ class UnitsController extends Controller
     public function create()
     {
         //
+        return view('admin.units.create');
     }
 
     /**
@@ -33,9 +36,19 @@ class UnitsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUnits $request)
     {
-        //
+        //validate the data from the StoreUnits
+        $validated = $request->validated();
+
+        //store data in the database
+        $name = Units::create($validated);
+
+        //flash message
+        session()->flash('status', 'A new measurement unit has been created');
+
+        //redirect
+        return redirect()->route('units.index');
     }
 
     /**
@@ -46,7 +59,8 @@ class UnitsController extends Controller
      */
     public function show($id)
     {
-        //
+        //method to display a single unit
+        return view('admin.units.show', ['name' => Units::findOrFail($id)]);
     }
 
     /**
@@ -58,6 +72,7 @@ class UnitsController extends Controller
     public function edit($id)
     {
         //
+        return view('admin.units.edit', ['name' => Units::findOrFail($id)]);
     }
 
     /**
@@ -67,9 +82,19 @@ class UnitsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUnits $request, $id)
     {
         //
+        //make sure id exists
+        $name = Units::findOrFail($id);
+
+        //return an array of validated data
+        $validated = $request->validated();
+        $name->fill($validated);
+        $name->save();
+
+        session()->flash('status', 'Measurement unit has been updated successfully');
+        return redirect()->route('units.index');
     }
 
     /**
@@ -81,5 +106,9 @@ class UnitsController extends Controller
     public function destroy($id)
     {
         //
+        $name = Units::findOrFail($id);
+        $name->delete();
+        session()->flash('status', 'Measurement unit has been deleted successfully');
+        return redirect()->route('units.index');
     }
 }

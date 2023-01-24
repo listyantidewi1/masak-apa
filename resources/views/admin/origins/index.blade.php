@@ -4,7 +4,7 @@
 
 @section('content')
 <h2>List of Ingredient Origins</h2>
-<div p-2>
+<div class="p-2">
     <a class="link-primary" href="{{ route('origins.create') }}">Add a new ingredient origin</a>
 </div>
 @include('admin.origins.partials.list')

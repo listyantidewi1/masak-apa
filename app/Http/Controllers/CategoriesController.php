@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategories;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -14,7 +16,7 @@ class CategoriesController extends Controller
     public function index()
     {
         //
-        return view('admin.categories.index');
+        return view('admin.categories.index',['category' => Categories::all()]);
     }
 
     /**
@@ -25,6 +27,7 @@ class CategoriesController extends Controller
     public function create()
     {
         //
+        return view('admin.categories.create');
     }
 
     /**
@@ -33,9 +36,19 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategories $request)
     {
-        //
+        //validate the data from the StoreCategories
+        $validated = $request->validated();
+
+        //store data in the database
+        $category = Categories::create($validated);
+
+        //flash message
+        session()->flash('status', 'A new ingredient category has been created');
+
+        //redirect
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -46,7 +59,8 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //
+        //method to display a single category
+        return view('admin.categories.show', ['category' => Categories::findOrFail($id)]);
     }
 
     /**
@@ -58,6 +72,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         //
+        return view('admin.categories.edit', ['category' => Categories::findOrFail($id)]);
     }
 
     /**
@@ -67,9 +82,19 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCategories $request, $id)
     {
         //
+        //make sure id exists
+        $category = Categories::findOrFail($id);
+
+        //return an array of validated data
+        $validated = $request->validated();
+        $category->fill($validated);
+        $category->save();
+
+        session()->flash('status', 'Ingredient category has been updated successfully');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -81,5 +106,9 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+        $category = Categories::findOrFail($id);
+        $category->delete();
+        session()->flash('status', 'Ingredient origin has been deleted successfully');
+        return redirect()->route('categories.index');
     }
 }
