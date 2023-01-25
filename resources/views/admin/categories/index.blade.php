@@ -3,5 +3,9 @@
 @section('title', 'Spices')
 
 @section('content')
-<h2>This is categories page</h2>
+<h2>List of Categories of Ingredients</h2>
+<div class="p-2">
+    <a class="link-primary" href="{{ route('categories.create') }}">Add a new ingredient category</a>
+</div>
+@include('admin.categories.partials.list')
 @endsection
